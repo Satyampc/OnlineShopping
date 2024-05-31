@@ -1,0 +1,197 @@
+
+body{
+  background-color: rgb(24, 24, 24)!Important;
+}
+.btn {
+  position: relative;
+}
+.sticky-cart-wrapper {
+  position: sticky;
+  top: 20px; /* Adjust this value as needed */
+}
+
+.banner-image {
+  background-image: url(img/bodyPic.jpeg);
+  background-size: cover;
+}
+#container {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#advertisements2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: whitesmoke;
+}
+.header {
+  background-color: rgb(23, 23, 23);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+a {
+  text-decoration: none;
+  font-size: 25px;
+}
+a:hover {
+  opacity: 0.7;
+}
+button:hover {
+  background-color: rgb(201, 197, 197);
+}
+.mainTitle h1{
+  color: rgb(91, 93, 116);
+  text-align: center;
+  font-family: fantasy;
+  font-size: 4rem!Important;
+  font-weight: bold;
+}
+.contact_us {
+  padding: 100px;
+  background-image: url(./img/logo\ home\ page.webp);
+  width: 100%;
+  height: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+a:hover #logo_sneakers_shop {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+#logo_sneakers_shop{
+  border-radius: 45px;
+}
+
+.gif-container {
+  /* background-color: white; */
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.ani-gif-left {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  position: absolute;
+  left: -100%;
+  animation: slide-in-left linear infinite;
+  animation-delay: 2s; /* Short delay for quick appearance */
+  animation-duration: 20s; /* Longer duration for slow sliding */
+}
+
+@keyframes slide-in-left {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.ani-gif-right {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  position: absolute;
+  left: 100%;
+  animation: slide-in-right linear infinite;
+  animation-delay: 2s; /* Short delay for quick appearance */
+  animation-duration: 20s; /* Longer duration for slow sliding */
+}
+
+@keyframes slide-in-right {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+/* Animated Start Shopping Button */
+.aniButt {
+  position: relative;
+  background: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  animation: glowing 2s infinite;
+}
+
+.aniButt span {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #fff) drop-shadow(0 0 15px #fff);
+}
+
+.aniButt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+  background-size: 400%;
+  border-radius: 5px;
+  z-index: -1;
+  filter: blur(20px);
+  animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.product.card {
+  transition: transform 0.3s ease;
+  color: black;
+}
+
+.product.card:hover {
+  transform: scale(1.25);
+}
+
+.glowing-text {
+  font-size: 3rem; 
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #4b7979, 0 0 40px #4b7979, 0 0 50px #4b7979, 0 0 60px #4b7979, 0 0 70px #4b7979, 0 0 80px #4b7979;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    text-align: right; /* Align text to the right */
+  }
+}
+
+
+
+
