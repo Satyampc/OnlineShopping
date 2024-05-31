@@ -166,7 +166,7 @@ a:hover #logo_sneakers_shop {
 }
 
 .product.card:hover {
-  transform: scale(1.25);
+  transform: scale(1.10);
 }
 
 .glowing-text {
