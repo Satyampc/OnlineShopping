@@ -37,10 +37,10 @@ button:hover {
   background-color: rgb(201, 197, 197);
 }
 .mainTitle h1{
-  color: rgb(91, 93, 116);
+  color: rgb(42, 42, 47);
   text-align: center;
   font-family: fantasy;
-  font-size: 4rem!Important;
+  font-size: 2rem!Important;
   font-weight: bold;
 }
 .contact_us {
