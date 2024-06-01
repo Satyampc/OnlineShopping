@@ -21,24 +21,31 @@
             <a class="navbar-brand">
                 <img id="logo_sneakers_shop" src="./img/logo.png" width="50%" />
             </a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-light" aria-current="page" href="index.html">Home</a>
+                      <a class="nav-link text-light" aria-current="page" href="index.html">
+                        <span class="nav-icon"><i class="fa-solid fa-house-chimney"></i></span>Home
+                      </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="./aboutUs.html">About Us</a>
+                      <a class="nav-link text-light" href="./aboutUs.html">
+                        <img class="navIcon" src="./img/aboutUs.png" />About Us
+                    </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="gallery.html">Gallery</a>
+                      <a class="nav-link text-light" href="gallery.html">
+                      <span class="nav-icon"><i class="fa-solid fa-cart-shopping"></i></span>Gallery
+                    </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="index.html#contact-section">Contact Us</a>
+                      <a class="nav-link text-light" href="index.html#contact-section">
+                      <span class="nav-icon"><i class="fa-solid fa-phone-volume"></i></span>Contact Us
+                    </a>
                     </li>
                 </ul>
             </div>
@@ -290,13 +297,13 @@
             </div>
           </div>
           <div class="col-md-3 my-5 pb-3 bg-light">
-            <div class="sticky-cart-wrapper">
               <h3 class="text-dark text-center mt-3 text-decoration-underline">Shopping Cart</h3>
-              <div class="cart card mb-3">
+              <div id="cart-section"  class="cart card mb-3">
                 <div class="card-body">
                   <div class="cart-items"></div>
                   <hr>
-                  <div class="cart-total">Total: $0.00</div>
+                  <div  class="cart-total">Total: $0.00</div>
+                  <hr>
                 </div>
               </div>
 
@@ -321,8 +328,14 @@
                   </div>
                 </form>
               </div>
-            </div>
           </div>
+        </div>
+      </div>
+
+      <div id="popupModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="popupMessage"></p>
         </div>
       </div>
       
@@ -344,16 +357,15 @@
             </div>
           </div>
 
-          <footer>
-            <div class="bg-light pt-2 py-xl-8 py-xxl-9 border-top border-light bg-dark text-light">
-                <div class="container overflow-hidden">
-                  <div class="row gy-5 gy-md-0 justify-content-center">
-                    <div class="col-xs-12 col-md-6 text-center text-md-start">
-                      <img class="widget-title" id="logo_sneakers_shop" src="./img/logo.png" alt="Store Logo"
-                            width="175" height="57">
-                        </a>
-                    </div>
-                        <div class="col-xs-12 col-md-6 text-center text-md-end">
+          <div class="bg-light pt-2 py-xl-8 py-xxl-9 border-top border-light bg-dark text-light">
+            <div class="container overflow-hidden">
+              <div class="row gy-5 gy-md-0 justify-content-center">
+                <div class="col-xs-12 col-md-6 text-center text-md-start">
+                  <img class="widget-title" id="logo_sneakers_shop" src="./img/logo.png" alt="Store Logo"
+                        width="175" height="57">
+                    </a>
+                </div>
+                    <div class="col-xs-12 col-md-6 text-center text-md-end">
                             <div class="social-media-wrapper">
                                 <ul class="list-unstyled m-0 p-0 d-flex justify-content-end">
                                     <li class="">

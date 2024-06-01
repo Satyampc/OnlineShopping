@@ -16,12 +16,12 @@
 
 <body>
 
-    <nav class="navbar fixed-top navbar-expand-lg p-md-3 font-monospace">
-        <div class="container-fluid d-flex justify-content-between">
+    <nav class="navbar navbar-expand-lg p-md-3 font-monospace">
+        <div class="container-fluid">
             <a class="navbar-brand">
                 <img id="logo_sneakers_shop" src="./img/logo.png" width="50%" />
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,16 +29,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-light" aria-current="page" href="index.html">Home</a>
+                      <a class="nav-link text-light" aria-current="page" href="index.html">
+                        <span class="nav-icon"><i class="fa-solid fa-house-chimney"></i></span>Home
+                      </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="./aboutUs.html">About Us</a>
+                        <a class="nav-link text-light" href="./aboutUs.html">
+                          <img class="navIcon" src="./img/aboutUs.png" />About Us
+                      </a>
+                      </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="gallery.html">
+                      <span class="nav-icon"><i class="fa-solid fa-cart-shopping"></i></span>Gallery
+                    </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="gallery.html">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="index.html#contact-section">Contact us</a>
+                      <a class="nav-link text-light" href="index.html#contact-section">
+                      <span class="nav-icon"><i class="fa-solid fa-phone-volume"></i></span>Contact Us
+                    </a>
                     </li>
                 </ul>
             </div>
@@ -50,8 +58,8 @@
             <div class="row d-flex justify-content-center align-items-center text-center text-light">
                 <div class="col-12 col-md-10 col-lg-8">
                     <h3 class="fs-1 mb-2 text-secondary text-uppercase ">About US</h3>
-                    <h2 class="display-1 mb-4">ALWAYS CREATIVE / EXPERIMENTING &amp; SATISFYING</h2>
-                    <a class="btn btn-lg btn-success mb-3 " href="./index.html#contact-section" type="button"
+                    <h2 class="mb-4">ALWAYS CREATIVE / EXPERIMENTING &amp; SATISFYING</h2>
+                    <a class="btn btn-lg btn-success" href="./index.html#contact-section" type="button"
                         role="button">Connect Now</a>
                 </div>
             </div>
@@ -62,7 +70,7 @@
         <div class="container-fluid ">
             <div class="row "></div>
             <section>
-                <video autoplay loop muted width="80%">
+                <video autoplay loop muted width="60%">
                     <source src="./img/Nike Jordan 1 Chicago _ Cinematic Shoe Commercial _ Nepal.mp4 "
                         type="video/mp4" />
                 </video>
@@ -75,18 +83,20 @@
             Shopping</a>
     </div>
 
-    <div class="container my-2 d-grid gap-5 text-light">
+</section>
+    <div class="container my-3 d-grid gap-5 text-light">
         <div class="row">
-            <div class="p-5 border">
+            <div class="abtUS p-4 border">
                 To ignite CREATIVITY and inspire a culture of innovation across all ages by
                 embracing EXPERIMENTATION and overcoming challenges -- Thereby delivering a
                 SATISFYING and transformative experience for everyone.
             </div>
         </div>
+    </div>
         </section>
 
         <footer>
-            <div class="bg-light py-4 py-xl-8 py-xxl-9 border-top border-light bg-dark text-light">
+            <div class="col-12 py-2 mt border-top border-light bg-dark text-light">
                 <div class="container overflow-hidden">
                     <div class="row gy-5 gy-md-0 align-items-md-center">
                         <div class="col-xs-12 col-md-7">
@@ -131,6 +141,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
+            <script src="https://kit.fontawesome.com/863a30ca91.js" crossorigin="anonymous"></script>
         <script type="text/css" src="https://kit.fontawesome.com/863a30ca91.js" crossorigin="anonymous"></script>
 </body>
 

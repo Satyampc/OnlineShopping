@@ -186,12 +186,102 @@ a:hover #logo_sneakers_shop {
   }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 810px) {
   .navbar-collapse {
-    text-align: right; /* Align text to the right */
+    justify-content: start;
   }
 }
 
+@media (min-width: 811px) {
+  .navbar-nav {
+    flex-direction: row;
+    align-items: end;
+  }
 
+  .nav-item {
+    margin-right: 1rem;
+  }
+}
+.nav-icon {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-right: 0.5rem;
+}
 
+@media (max-width: 911px) {
+  .nav-link span:not(.nav-icon) {
+    display: none;
+  }
+}
 
+.navIcon{
+  width: 40px; /* Adjust the width as needed */
+  height: 25px; /* Adjust the height as needed */
+  margin-right: 0.5rem; /* Add some spacing between the icon and the text */
+  vertical-align: middle; /
+}
+
+.abtUS{
+  font-family: fantasy;
+  font-size: large;
+  font-weight: bold;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+    .video-container {
+        padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+    }
+}
+
+.cart-item img {
+  width: 200px;  /* Set your desired width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+  /* Styles for the modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Close button style */
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
