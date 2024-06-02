@@ -39,11 +39,8 @@ function addToCart(event) {
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.appendChild(cartItem);
   }
-  showModal(`${productInfo.name} added to cart!`);
+  showModal(`Good Choice!!! ${productInfo.name} added to cart!`);
   updateCartTotal();
-
-  // Scroll to the cart section
-  document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 }
 
   
@@ -188,10 +185,10 @@ function handleCheckout(event) {
 }
 
 
+// Modal pop-up for adding item
 const modal = document.getElementById('popupModal');
 const closeBtn = document.querySelector('.close');
-
-  // Function to show the modal with a message
+  // To show modal after adding a Item in cart
   function showModal(message) {
     const popupMessage = document.getElementById('popupMessage');
     popupMessage.textContent = message;
@@ -209,3 +206,60 @@ const closeBtn = document.querySelector('.close');
       modal.style.display = 'none';
     }
   });
+
+ // Get the scroll buttons container and buttons
+ document.addEventListener('DOMContentLoaded', function () {
+  const scrollButtonsContainer = document.getElementById('scrollButtonsContainer');
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  const scrollToBottomBtn = document.getElementById('scrollToBottomBtn');
+  let hideTimeout;
+
+  function toggleScrollButtons() {
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const bottomOffset = document.body.offsetHeight - windowHeight;
+
+      if (scrollPosition > windowHeight / 2) {
+          showScrollButtons();
+      } else {
+          hideScrollButtons();
+      }
+
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+          scrollToBottomBtn.style.opacity = '0';
+          scrollToBottomBtn.style.pointerEvents = 'none';
+      } else {
+          scrollToBottomBtn.style.opacity = '1';
+          scrollToBottomBtn.style.pointerEvents = 'auto';
+      }
+  }
+
+  function showScrollButtons() {
+      clearTimeout(hideTimeout);
+      scrollButtonsContainer.classList.add('show');
+      hideTimeout = setTimeout(hideScrollButtons, 3000);
+  }
+
+  function hideScrollButtons() {
+      scrollButtonsContainer.classList.remove('show');
+  }
+
+  window.addEventListener('scroll', toggleScrollButtons);
+
+  scrollToTopBtn.addEventListener('click', function () {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
+
+  scrollToBottomBtn.addEventListener('click', function () {
+      window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+      });
+  });
+
+  // Initialize scroll buttons visibility
+  toggleScrollButtons();
+});

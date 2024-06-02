@@ -18,14 +18,6 @@ body{
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-#advertisements2 {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background-color: whitesmoke;
-}
-.header {
-  background-color: rgb(23, 23, 23);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
 a {
   text-decoration: none;
   font-size: 25px;
@@ -285,3 +277,115 @@ a:hover #logo_sneakers_shop {
     padding: 10px;
     cursor: pointer;
   }
+
+  #scrollButtonsContainer {
+    position: fixed;
+    bottom: 20px; /* Place it at the bottom of the screen */
+    right: 50%; /* Align to the right */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.scroll-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #f12626;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    padding: 0px;
+}
+
+.scroll-btn:hover {
+    background-color: #555;
+}
+
+#scrollButtonsContainer.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fa-cart-shopping {
+  font-size: 1.5rem;
+  /* align-self: center; */
+}
+
+.card-body {
+  padding: 1rem; /* Default padding */
+}
+
+.product-name {
+  font-size: 1.25rem; /* Default font size */
+}
+
+.product-price {
+  font-size: 1rem; /* Default font size */
+}
+
+.add-to-cart {
+  font-size: 1rem; /* Default button font size */
+  padding: 0.5rem 1rem; /* Default button padding */
+}
+
+.cart-icon {
+  font-size: 1.5rem; /* Default icon size */
+  color: black; /* Icon color */
+}
+
+/* Media query for small screens */
+@media (max-width: 767.98px) {
+  .card-body {
+    padding: 0.75rem; /* Reduce padding on small screens */
+  }
+
+  .product-name {
+    font-size: 1rem; /* Reduce font size on small screens */
+  }
+
+  .product-price {
+    font-size: 0.875rem; /* Reduce font size on small screens */
+  }
+
+  .add-to-cart {
+    font-size: 0.875rem; /* Reduce button font size on small screens */
+    padding: 0.4rem 0.8rem; /* Reduce button padding on small screens */
+  }
+
+  .cart-icon {
+    font-size: 1.25rem; 
+  }
+}
+
+/* Media query for extra small screens */
+@media (max-width: 575.98px) {
+  .card-body {
+    padding: 0.5rem; 
+  }
+
+  .product-name {
+    font-size: 0.875rem; 
+  }
+
+  .product-price {
+    font-size: 0.75rem; 
+
+  .add-to-cart {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem; 
+  }
+
+  .cart-icon {
+    font-size: 1rem; 
+  }
+}
+}
