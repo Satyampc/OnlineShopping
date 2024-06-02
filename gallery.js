@@ -39,10 +39,9 @@ function addToCart(event) {
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.appendChild(cartItem);
   }
-  showModal(`Good Choice!!! ${productInfo.name} added to cart!`);
+  showModal(productInfo.image,`${productInfo.name} added to cart!`);
   updateCartTotal();
 }
-
   
 // Function to create a cart item element
 function createCartItem(productInfo) {
@@ -189,18 +188,37 @@ function handleCheckout(event) {
 const modal = document.getElementById('popupModal');
 const closeBtn = document.querySelector('.close');
   // To show modal after adding a Item in cart
-  function showModal(message) {
+  function showModal(imageSrc, message) {
     const popupMessage = document.getElementById('popupMessage');
-    popupMessage.textContent = message;
-    modal.style.display = 'block';
-  }
+    popupMessage.innerHTML = ''; // Clear previous content
 
-  // Close the modal when the <span> (x) is clicked
+  // Set the product image
+  const productImage = document.querySelector('.modal-content img.imageSrc');
+  productImage.classList.add('imageSrc', 'container-fluid');
+  productImage.src = imageSrc;
+  productImage.alt = 'Product Image';
+
+  // Create and append the message text
+  const messageText = document.createElement('p');
+  messageText.textContent = message;
+
+  // Append the message text to the popupMessage
+  popupMessage.appendChild(messageText);
+
+  // Show the modal
+  modal.style.display = 'block';
+}
+  // Create the cart icon element
+  const cartIcon = document.createElement('i');
+  cartIcon.classList.add('fa-solid', 'fa-cart-shopping', 'cart-icon');
+  popupMessage.appendChild(cartIcon);
+
+  // Close the modal when clicking on (x)
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
   });
 
-  // Close the modal if user clicks outside of it
+  // Close the modal if clicked outside of it
   window.addEventListener('click', (event) => {
     if (event.target === modal) {
       modal.style.display = 'none';
@@ -260,6 +278,5 @@ const closeBtn = document.querySelector('.close');
       });
   });
 
-  // Initialize scroll buttons visibility
   toggleScrollButtons();
 });

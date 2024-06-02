@@ -389,3 +389,9 @@ a:hover #logo_sneakers_shop {
   }
 }
 }
+
+.imageSrc{
+  width: 250px;
+  height: 200px;
+  justify-content:center;
+}
