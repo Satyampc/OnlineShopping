@@ -2,13 +2,6 @@
 body{
   background-color: rgb(24, 24, 24)!Important;
 }
-.btn {
-  position: relative;
-}
-.sticky-cart-wrapper {
-  position: sticky;
-  top: 20px; /* Adjust this value as needed */
-}
 
 .banner-image {
   background-image: url(img/bodyPic.jpeg);
@@ -221,7 +214,7 @@ a:hover #logo_sneakers_shop {
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
 }
@@ -236,16 +229,15 @@ a:hover #logo_sneakers_shop {
 
 @media (max-width: 767px) {
     .video-container {
-        padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+        padding-bottom: 75%;
     }
 }
 
-.cart-item img {
-  width: 200px;  /* Set your desired width */
-  height: auto; /* Maintain aspect ratio */
-}
+/* .cart-item img {
+  width: 200px;  
+  height: auto; 
+} */
 
-  /* Styles for the modal */
   .modal {
     display: none;
     position: fixed;
@@ -255,33 +247,34 @@ a:hover #logo_sneakers_shop {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
     max-width: 400px;
     text-align: center;
     position: relative;
+    border-radius: 20%;
   }
 
-  /* Close button style */
   .close {
+    font-size: 20px;
     position: absolute;
     top: 0;
     right: 0;
-    padding: 10px;
+    padding: 25px;
     cursor: pointer;
   }
 
   #scrollButtonsContainer {
     position: fixed;
-    bottom: 20px; /* Place it at the bottom of the screen */
-    right: 50%; /* Align to the right */
+    bottom: 20px;
+    right: 50%; 
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -317,81 +310,37 @@ a:hover #logo_sneakers_shop {
 
 .fa-cart-shopping {
   font-size: 1.5rem;
-  /* align-self: center; */
 }
 
 .card-body {
-  padding: 1rem; /* Default padding */
+  padding: 1rem;
 }
 
 .product-name {
-  font-size: 1.25rem; /* Default font size */
+  font-size: 1.25rem;
 }
 
 .product-price {
-  font-size: 1rem; /* Default font size */
+  font-size: 1rem; 
 }
 
 .add-to-cart {
-  font-size: 1rem; /* Default button font size */
-  padding: 0.5rem 1rem; /* Default button padding */
+  font-size: 1rem; 
+  padding: 0.5rem 1rem; 
 }
 
 .cart-icon {
-  font-size: 1.5rem; /* Default icon size */
-  color: black; /* Icon color */
-}
-
-/* Media query for small screens */
-@media (max-width: 767.98px) {
-  .card-body {
-    padding: 0.75rem; /* Reduce padding on small screens */
-  }
-
-  .product-name {
-    font-size: 1rem; /* Reduce font size on small screens */
-  }
-
-  .product-price {
-    font-size: 0.875rem; /* Reduce font size on small screens */
-  }
-
-  .add-to-cart {
-    font-size: 0.875rem; /* Reduce button font size on small screens */
-    padding: 0.4rem 0.8rem; /* Reduce button padding on small screens */
-  }
-
-  .cart-icon {
-    font-size: 1.25rem; 
-  }
-}
-
-/* Media query for extra small screens */
-@media (max-width: 575.98px) {
-  .card-body {
-    padding: 0.5rem; 
-  }
-
-  .product-name {
-    font-size: 0.875rem; 
-  }
-
-  .product-price {
-    font-size: 0.75rem; 
-
-  .add-to-cart {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.6rem; 
-  }
-
-  .cart-icon {
-    font-size: 1rem; 
-  }
-}
+  font-size: 1.5rem;
+  color: black; 
 }
 
 .imageSrc{
   width: 250px;
   height: 200px;
   justify-content:center;
+  border-radius: 25%;
+}
+
+#shopping-cart{
+  display: none;
 }

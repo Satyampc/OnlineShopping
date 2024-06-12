@@ -1,3 +1,8 @@
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 // Display cart items
 function displayCartItems(container, cartItems) {
   container.innerHTML = ''; 
@@ -21,27 +26,33 @@ addToCartButtons.forEach(button => {
 
 // To add a product to the cart
 function addToCart(event) {
-  const product = event.target.closest('.product');
-  const productInfo = {
-    name: product.querySelector('.product-name').textContent,
-    price: product.querySelector('.product-price').textContent.replace('$', ''),
-    image: product.querySelector('.card-img-top').src,
-  };
-
-  const existingCartItem = document.querySelector(`.cart-item[data-product-name="${productInfo.name}"]`);
-
-  if (existingCartItem) {
-    const quantityInput = existingCartItem.querySelector('.quantity-input');
-    quantityInput.value = parseInt(quantityInput.value) + 1;
-  } else {
-    const cartItem = createCartItem(productInfo);
-    cartItem.dataset.productName = productInfo.name;
-    const cartItemsContainer = document.querySelector('.cart-items');
-    cartItemsContainer.appendChild(cartItem);
+    const product = event.target.closest('.product');
+    const productInfo = {
+      name: product.querySelector('.product-name').textContent,
+      price: parseFloat(product.querySelector('.product-price').textContent.replace('$', '')),
+      image: product.querySelector('.card-img-top').src,
+    };
+  
+    const existingCartItem = document.querySelector(`.cart-item[data-product-name="${productInfo.name}"]`);
+  
+    if (existingCartItem) {
+      const quantityInput = existingCartItem.querySelector('.quantity-input');
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    } else {
+      const cartItem = createCartItem(productInfo);
+      cartItem.dataset.productName = productInfo.name;
+      const cartItemsContainer = document.querySelector('.cart-items');
+      cartItemsContainer.appendChild(cartItem);
+    }
+    showModal(productInfo.image, `${productInfo.name} added to cart!`);
+    updateCartTotal();
+    showCart();
   }
-  showModal(productInfo.image,`${productInfo.name} added to cart!`);
-  updateCartTotal();
-}
+  
+  function showCart() {
+    const cart = document.getElementById('shopping-cart');
+    cart.style.display = 'block';
+  }
   
 // Function to create a cart item element
 function createCartItem(productInfo) {
@@ -215,7 +226,7 @@ const closeBtn = document.querySelector('.close');
 
   // Close the modal when clicking on (x)
   closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
+    orderModal.style.display = 'none';
   });
 
   // Close the modal if clicked outside of it
@@ -280,3 +291,70 @@ const closeBtn = document.querySelector('.close');
 
   toggleScrollButtons();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    const creditCardDetails = document.querySelector('.credit-card-details');
+    const cardNumberInput = document.getElementById('cardNumber');
+    const expiryDateInput = document.getElementById('expiryDate');
+    const cvvInput = document.getElementById('cvv');
+    const checkoutForm = document.getElementById('checkout-form');
+  
+    // Function to show error message
+    function showError(input, message) {
+      const formControl = input.parentElement;
+      const errorMessage = formControl.querySelector('.invalid-feedback');
+      errorMessage.textContent = message;
+      formControl.classList.add('was-validated');
+    }
+  
+    // Function to validate credit card details
+    function validateCreditCard() {
+      const cardNumber = cardNumberInput.value.trim();
+      const expiryDate = expiryDateInput.value.trim();
+      const cvv = cvvInput.value.trim();
+  
+      if (cardNumber === '') {
+        showError(cardNumberInput, 'Please enter a valid card number.');
+        return false;
+      }
+  
+      if (expiryDate === '') {
+        showError(expiryDateInput, 'Please enter a valid expiry date.');
+        return false;
+      }
+  
+      if (cvv === '') {
+        showError(cvvInput, 'Please enter a valid CVV.');
+        return false;
+      }
+  
+      return true;
+    }
+  
+    // Event listener for payment method radios
+    paymentMethodRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'creditCard') {
+          creditCardDetails.style.display = 'block';
+        } else {
+          creditCardDetails.style.display = 'none';
+        }
+      });
+    });
+  
+    // Event listener for form submission
+    checkoutForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+  
+      if (selectedPaymentMethod === 'creditCard' && !validateCreditCard()) {
+        return; // Stop form submission if credit card details are invalid
+      }
+  
+      // Form is valid, proceed with submission
+      console.log('Form submitted successfully!');
+    });
+  });
+  
