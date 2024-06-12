@@ -1,41 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const checkoutForm = document.getElementById('checkout-form');
-  const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
-  const orderNumberSpan = document.getElementById('orderNumber');
-  const customerNameSpan = document.getElementById('customerName');
-  const closeBtn = document.querySelector('.close');
+    const checkoutForm = document.getElementById('checkout-form');
+    const orderModalElement = document.getElementById('orderModal');
+    const orderNumberSpan = document.getElementById('orderNumber');
+    const customerNameSpan = document.getElementById('customerName');
 
-  function generateRandomNumber() {
-    let randomNum = Math.floor(Math.random() * 900000000) + 100000000;
-    return randomNum.toString();
-  }
+    // Check if the orderModal element exists
+    if (orderModalElement) {
+      const orderModal = new bootstrap.Modal(orderModalElement);
 
-  checkoutForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+      function generateRandomNumber() {
+        let randomNum = Math.floor(Math.random() * 900000000) + 100000000;
+        return randomNum.toString();
+      }
 
-    const name = document.querySelector('input[placeholder="First Name"]').value;
-    const address = document.querySelector('input[placeholder="Address"]').value;
+      checkoutForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Perform any necessary validation or processing here
+        const name = document.querySelector('input[placeholder="First Name"]').value;
+        const address = document.querySelector('input[placeholder="Address"]').value;
 
-    // Generate a unique order number
-    const orderNumber = generateRandomNumber();
+        // Perform any necessary validation or processing here
 
-    // Update the order number in the modal
-    orderNumberSpan.textContent = orderNumber;
-    customerNameSpan.textContent = name;
+        // Generate a unique order number
+        const orderNumber = generateRandomNumber();
 
-    // Show the order confirmation modal
-    orderModal.show();
+        // Update the order number in the modal
+        orderNumberSpan.textContent = orderNumber;
+        customerNameSpan.textContent = name;
+
+        // Show the order confirmation modal
+        orderModal.show();
+      });
+
+      // Reset the form after the modal is closed
+      orderModalElement.addEventListener('hidden.bs.modal', function(event) {
+        // Check if the event is specifically for the 'hidden.bs.modal' event
+        if (event.target === orderModalElement && event.type === 'hidden.bs.modal') {
+          checkoutForm.reset();
+        }
+      });
+
+      // Manual trigger button event listener
+      document.getElementById('manualTriggerBtn').addEventListener('click', function() {
+        orderModal.show(); // Manually show the modal
+      });
+    }
   });
-
-   // Close the modal when clicking on (x)
-   closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  // Reset the form after the modal is closed
-  orderModal._element.addEventListener('hidden.bs.modal', function() {
-    checkoutForm.reset();
-  });
-});
