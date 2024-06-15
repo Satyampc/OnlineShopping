@@ -56,8 +56,8 @@ function addToCart(event) {
   
 // Function to create a cart item element
 function createCartItem(productInfo) {
-  const cartItem = document.createElement('div');
-  cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'mb-3');
+  const cartItem = document.createElement('p');
+  cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'ml-3');
   cartItem.dataset.productName = productInfo.name;
 
   const productImage = document.createElement('img');
@@ -198,10 +198,11 @@ function handleCheckout(event) {
 // Modal pop-up for adding item
 const modal = document.getElementById('popupModal');
 const closeBtn = document.querySelector('.close');
-  // To show modal after adding a Item in cart
-  function showModal(imageSrc, message) {
-    const popupMessage = document.getElementById('popupMessage');
-    popupMessage.innerHTML = ''; // Clear previous content
+
+// To show modal after adding an item to the cart
+function showModal(imageSrc, message) {
+  const popupMessage = document.getElementById('popupMessage');
+  popupMessage.innerHTML = ''; // Clear previous content
 
   // Set the product image
   const productImage = document.querySelector('.modal-content img.imageSrc');
@@ -212,22 +213,28 @@ const closeBtn = document.querySelector('.close');
   // Create and append the message text
   const messageText = document.createElement('p');
   messageText.textContent = message;
-
-  // Append the message text to the popupMessage
   popupMessage.appendChild(messageText);
 
-  // Show the modal
-  modal.style.display = 'block';
-}
   // Create the cart icon element
   const cartIcon = document.createElement('i');
   cartIcon.classList.add('fa-solid', 'fa-cart-shopping', 'cart-icon');
   popupMessage.appendChild(cartIcon);
 
-  // Close the modal when clicking on (x)
-  closeBtn.addEventListener('click', () => {
-    orderModal.style.display = 'none';
-  });
+  // Show the modal
+  modal.style.display = 'block';
+}
+
+// Close the modal when clicking on (x)
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Close the modal if clicked outside of it
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
 
   // Close the modal if clicked outside of it
   window.addEventListener('click', (event) => {
@@ -308,29 +315,49 @@ document.addEventListener('DOMContentLoaded', () => {
       formControl.classList.add('was-validated');
     }
   
-    // Function to validate credit card details
-    function validateCreditCard() {
-      const cardNumber = cardNumberInput.value.trim();
-      const expiryDate = expiryDateInput.value.trim();
-      const cvv = cvvInput.value.trim();
-  
-      if (cardNumber === '') {
-        showError(cardNumberInput, 'Please enter a valid card number.');
-        return false;
-      }
-  
-      if (expiryDate === '') {
-        showError(expiryDateInput, 'Please enter a valid expiry date.');
-        return false;
-      }
-  
-      if (cvv === '') {
-        showError(cvvInput, 'Please enter a valid CVV.');
-        return false;
-      }
-  
-      return true;
+    // Function to show error message
+function showError(input, message) {
+  const formControl = input.parentElement;
+  const errorMessage = formControl.querySelector('.invalid-feedback');
+  errorMessage.textContent = message;
+  formControl.classList.add('was-validated');
+}
+
+// Function to validate credit card details
+function validateCreditCard() {
+  const cardNumber = cardNumberInput.value.trim();
+  const expiryDate = expiryDateInput.value.trim();
+  const cvv = cvvInput.value.trim();
+
+  // Validate card number
+  if (cardNumber === '' || isNaN(cardNumber) || cardNumber.length < 13 || cardNumber.length > 19) {
+    showError(cardNumberInput, 'Please enter a valid card number.');
+    return false;
+  }
+
+  // Validate expiry date (MM/YY)
+  const expiryRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+  if (!expiryRegex.test(expiryDate)) {
+    showError(expiryDateInput, 'Please enter a valid expiry date (MM/YY).');
+    return false;
+  } else {
+    const [month, year] = expiryDate.split('/').map(Number);
+    const now = new Date();
+    const expiry = new Date(`20${year}`, month - 1);
+    if (expiry <= now) {
+      showError(expiryDateInput, 'The expiry date must be in the future.');
+      return false;
     }
+  }
+
+  // Validate CVV
+  if (cvv === '' || isNaN(cvv) || (cvv.length !== 3 && cvv.length !== 4)) {
+    showError(cvvInput, 'Please enter a valid CVV.');
+    return false;
+  }
+
+  return true;
+}
   
     // Event listener for payment method radios
     paymentMethodRadios.forEach(radio => {

@@ -140,9 +140,9 @@ a:hover #logo_sneakers_shop {
 
 .cart-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: unset;
   align-items: flex-start;
-  margin-bottom: 10px;
+  /* margin-bottom: 10%; */
 }
 
 .product.card {
@@ -232,11 +232,6 @@ a:hover #logo_sneakers_shop {
         padding-bottom: 75%;
     }
 }
-
-/* .cart-item img {
-  width: 200px;  
-  height: auto; 
-} */
 
   .modal {
     display: none;
@@ -329,6 +324,17 @@ a:hover #logo_sneakers_shop {
   padding: 0.5rem 1rem; 
 }
 
+.card-body .cart-item img{
+max-width: 50%;
+margin-right: 20%;
+}
+.cart-item .product-name {
+  font-size: 200%;
+}
+ .cart-item div{
+margin-left: 10%;
+}
+
 .cart-icon {
   font-size: 1.5rem;
   color: black; 
@@ -343,4 +349,37 @@ a:hover #logo_sneakers_shop {
 
 #shopping-cart{
   display: none;
+}
+
+.quantity-input{
+  width: 50%;
+}
+
+.modal-content {
+  max-width: 90%;
+  padding: 1rem;
+}
+
+.modal-content img.imageSrc {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px; 
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    width: 100%;
+    margin: 0;
+  }
+  .modal-content {
+    padding: 1rem;
+  }
+}
+
+.firstName, .lastName, .email{
+  width: 50%;
+}
+.add{
+  width: 75%;
 }
