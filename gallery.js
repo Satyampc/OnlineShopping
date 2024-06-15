@@ -195,7 +195,6 @@ function handleCheckout(event) {
 }
 
 
-// Modal pop-up for adding item
 const modal = document.getElementById('popupModal');
 const closeBtn = document.querySelector('.close');
 
@@ -215,10 +214,13 @@ function showModal(imageSrc, message) {
   messageText.textContent = message;
   popupMessage.appendChild(messageText);
 
-  // Create the cart icon element
-  const cartIcon = document.createElement('i');
-  cartIcon.classList.add('fa-solid', 'fa-cart-shopping', 'cart-icon');
-  popupMessage.appendChild(cartIcon);
+  // Check if the cart icon already exists
+  if (!document.querySelector('.cart-icon')) {
+    // Create the cart icon element
+    const cartIcon = document.createElement('i');
+    cartIcon.classList.add('fa-solid', 'fa-cart-shopping', 'cart-icon');
+    popupMessage.appendChild(cartIcon);
+  }
 
   // Show the modal
   modal.style.display = 'block';
@@ -236,12 +238,6 @@ window.addEventListener('click', (event) => {
   }
 });
 
-  // Close the modal if clicked outside of it
-  window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
 
  // Get the scroll buttons container and buttons
  document.addEventListener('DOMContentLoaded', function () {
